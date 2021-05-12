@@ -9,4 +9,6 @@ $route['user/login'] = 'user/login';
 $route['dashboard'] = 'dashboard';
 $route['user-login'] = 'user/logout';
 
+$route['registration'] = 'registration';
+
  

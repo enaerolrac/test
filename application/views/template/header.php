@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo site_url('assets/css/bootstrap.css'); ?>">
+    <link rel="stylesheet" href="<?php echo site_url('assets/fonts/fontawesome/all.min.css');?> ">
+    <link rel="stylesheet" href="<?php echo site_url('assets/fonts/Roboto/stylesheet.css');?> ">
+    <link rel="stylesheet" href="<?php echo site_url('assets/css/sweetalert/sweetalert2.css'); ?>">
 </head>
 <body>
 

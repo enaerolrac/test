@@ -30,6 +30,7 @@
 <script src="<?php echo site_url('assets/js/jquery.min.js'); ?>"></script>
 <script src="<?php echo site_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
 <script src="<?php echo site_url('assets/js/sweetalert/sweetalert2.min.js'); ?>"></script>
+<script src="<?php echo site_url('assets/js/bootstrap-select.min.js'); ?>"></script>
 
 
 <script>

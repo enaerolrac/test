@@ -74,7 +74,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-6">
-                    <form action="" id="'userRegistration" method="POST">
+                    <form action="" id="addUserForm" method="POST">
                         <div class="row">
                                     
                             <div class="col-lg-6 my-auto text-center">
@@ -84,10 +84,10 @@
                                             <i class="fas fa-camera fa-2x"></i>
                                             <p>Update Photo</p>
                                         </label>
-                                        <input type="file" style="display:none;" class="mb-3" name="upload_user_image" id="uploadUserImage" accept="image/*">
+                                        <input type="file" style="display:none;" class="mb-3" name="user_image" id="uploadUserImage" accept="image/*" onchange="previewImage(event, 'userImage' )">
                                     </div>
-                                    <canvas style="display:none;" width="200" height="200"></canvas>
-                                    <img class="img-fluid"src="https://www.emmegi.co.uk/wp-content/uploads/2019/01/User-Icon.jpg" alt="">
+                                    <canvas id="userImageCanvas" style="display:none;" width="200" height="200"></canvas>
+                                    <img class="img-fluid" id="userImage" src="https://www.emmegi.co.uk/wp-content/uploads/2019/01/User-Icon.jpg" alt="User Image">
                                 </div>
                                 
                             </div>
@@ -95,43 +95,67 @@
 
                                 <div class="form-group">
                                     <label for="userFirstName">First Name</label>
-                                    <input type="text" class="form-control" name="first_name" placeholder="Enter your first name">
+                                    <input type="text" class="form-control" name="first_name" id="firstName" placeholder="Enter your first name" required="">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="userLastName">Last Name</label>
-                                    <input type="text" class="form-control" name ="last_name" placeholder="Enter your second name">
+                                    <input type="text" class="form-control" name ="last_name" id="lastName"placeholder="Enter your second name" required="">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="userRole">User Role</label>
-                                    <select class="form-control" name="user_role" id="userRole">
-                                        <option selected disabled>Select a role...</option>
-                                        <option value="administrator">Administrator</option>
-                                        <option value="supervisor">Supervisor</option>
-                                        <option value="guest">Guest</option>
+                                    <select class="form-control selectpicker" name="role_id" id="selectRole" data-live-search="true" required="">
+                                        <option selected disabled >Select a role...</option>
+                                        <option value="addRole"data-icon='fas fa-plus-circle'>Add roles</option>
+                                        <?php
+                                            foreach ($roles as $role) {
+                                                echo "<option value='"  . $role->id  . "'>"  .$role->name . "</option>";
+                                            }
+                                        ?>
                                     </select>
                                 </div>
 
                                 <div class="form-group">
                                         <label for="userBirthdate">Birthdate</label>
-                                        <input class="form-control" type="date" name="user_birthdate">
+                                        <input class="form-control" type="date" name="birthdate" required="">
                                 </div>
                             </div>
+
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" name ="username" id="username"placeholder="Enter your username" required="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" name ="password" id="password"placeholder="Enter your password" required="">
+                                </div>
+                            </div>
+
+
+
+
+
+
+
                             <div class="col-lg-12">
                                 
                                 <div class="form-group">
                                         <label for="userAddress">Complete Address</label>
-                                        <textarea class="form-control" name="user_address" id="userAddress" row=5>
-                                        </textarea>
+                                        <textarea class="form-control" name="address" id="userAddress" row=5 required=""></textarea>
                                 </div>
                            
                            
                             </div>
                             <div class="col-lg-12 text-right">
                                 <button class="btn btn-secondary">Cancel</button>
-                                <button type="submit" class="btn btn-success">Save</button>
-                            </div>
+                                <input type="submit" class="btn btn-success" value="Save">
+                            </div> 
                         </div> 
                     </form>
 
@@ -139,6 +163,34 @@
             </div>
         </div> 
         
+    </div>
+
+</div>
+
+
+
+<div class="modal fade" id="addRoleModal" role="dialog" data-backup="static" aria-labelledby="addRoleModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class= "modal-content text-center">
+            <div class="modal-header">
+                <h2>Add Role</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="addRoleForm" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                    <label for="Add Role">Add Role here</label>
+                    <input type="text" class="form-control" name="name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="Submit">
+                
+                </div>
+            </form>
+        </div>
     </div>
 
 </div>

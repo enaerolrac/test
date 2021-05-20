@@ -74,7 +74,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-6">
-                    <form action="" id="userRegistration" method="POST">
+                    <form action="" id="addUserForm" method="POST">
                         <div class="row">
                                     
                             <div class="col-lg-6 my-auto text-center">
@@ -84,11 +84,10 @@
                                             <i class="fas fa-camera fa-2x"></i>
                                             <p>Update Photo</p>
                                         </label>
-                                        <input type="file" style="display:none;" class="mb-3" name="upload_user_image" id="uploadUserImage" accept="image/*" onchange="previewImage(event,'userImage')">
+                                        <input type="file" style="display:none;" class="mb-3" name="user_image" id="uploadUserImage" accept="image/*" onchange="previewImage(event, 'userImage' )">
                                     </div>
-                                    <canvas style="display:none;" width="200" height="200" id="userImageCanvas"></canvas>
-
-                                    <img class="img-fluid" id="userImage" src="https://www.emmegi.co.uk/wp-content/uploads/2019/01/User-Icon.jpg" alt="">
+                                    <canvas id="userImageCanvas" style="display:none;" width="200" height="200"></canvas>
+                                    <img class="img-fluid" id="userImage" src="https://www.emmegi.co.uk/wp-content/uploads/2019/01/User-Icon.jpg" alt="User Image">
                                 </div>
                                 
                             </div>
@@ -106,20 +105,14 @@
 
                                 <div class="form-group">
                                     <label for="userRole">User Role</label>
-                                    <select class="form-control selectpicker" name="role_id" id="selectRole" data-live-search="true"> 
-                                        <option selected disabled>Select a role...</option>
-                                        <option value="addRole" data-icon='fas fa-plus-circle'>Add Roles</option>
-                                        <?php 
-                                                foreach($roles as $role){
-                                                    echo "<option value='". $role->id . "'>". $role->name. "</option>";
-                                                }
-
+                                    <select class="form-control selectpicker" name="role_id" id="selectRole" data-live-search="true" required="">
+                                        <option selected disabled >Select a role...</option>
+                                        <option value="addRole"data-icon='fas fa-plus-circle'>Add roles</option>
+                                        <?php
+                                            foreach ($roles as $role) {
+                                                echo "<option value='"  . $role->id  . "'>"  .$role->name . "</option>";
+                                            }
                                         ?>
-                                        
-                                        <!-- <option selected disabled>Select a role...</option>
-                                        <option value="administrator">Administrator</option>
-                                        <option value="supervisor">Supervisor</option>
-                                        <option value="guest">Guest</option> -->
                                     </select>
                                 </div>
 
@@ -128,22 +121,29 @@
                                         <input class="form-control" type="date" name="birthdate" required="">
                                 </div>
                             </div>
-                            <div class="col-lg-6">           
-                            
+
+
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="userUsername">Username </label>
-                                    <input type="text" class="form-control" name ="username" placeholder="Enter your username" id="username" required="">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" name ="username" id="username"placeholder="Enter your username" required="">
                                 </div>
                             </div>
-                            <div class="col-lg-6">           
 
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="userPassword">Password</label>
-                                    <input type="password" class="form-control" name ="password" placeholder="Enter your password" id="password" required="">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" name ="password" id="password"placeholder="Enter your password" required="">
                                 </div>
-                             </div>
+                            </div>
 
-                                <div class="col-lg-12">
+
+
+
+
+
+
+                            <div class="col-lg-12">
                                 
                                 <div class="form-group">
                                         <label for="userAddress">Complete Address</label>
@@ -158,40 +158,34 @@
                             </div>
                         </div> 
                     </form>
-
                 </div>
             </div>
-        </div> 
-        
+        </div>        
     </div>
-
 </div>
 
-<div class="modal fade" id="addRoleModal" role="dialog" data-backup="static" aria-labelledby="addRoleTitled" aria-hidden="true">
+
+
+<div class="modal fade" id="addRoleModal" role="dialog" data-backup="static" aria-labelledby="addRoleModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class= "modal-content text-center">
             <div class="modal-header">
-                <h2>Add Modal</h2>
+                <h2>Add Role</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-
-        <form method="POST" id="addRoleForm">
-            <div class="modal-body">
-                
-                <div class="form-group">
-                    <label for="Add Role">Add Role</label>
+            <form id="addRoleForm" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                    <label for="Add Role">Add Role here</label>
                     <input type="text" class="form-control" name="name">
+                    </div>
                 </div>
-            </div>
-            
-            
-        
-            
-            <div class="modal-footer">
-                <input type="submit" class="btn btn-success" value="Submit">
-            </div>
-        </form>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="Submit">               
+                </div>
+            </form>
         </div>
     </div>
+</div>

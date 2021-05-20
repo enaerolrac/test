@@ -16,9 +16,9 @@ class User extends CI_Controller {
 
     public function index()
     {
-        if($this->sessionUser !=null){
+        if ($this->sessionUser !=null) {
             redirect("dashboard");
-        }else{
+        } else {
             $this->load->view("template/header");
             $this->load->view("login");
             $this->load->view("template/footer");
@@ -41,7 +41,7 @@ class User extends CI_Controller {
             $this->session->set_userdata(array("user" => $user));
             redirect("dashboard");
         }
-        // var_dump($user);
+        
     }
     #endregion
 
@@ -55,8 +55,7 @@ class User extends CI_Controller {
     }
     #endregion
 
-    #endregion
-
+    #region ADD ROLE
     public function addRole()
     {
         $data = $_POST;
@@ -136,29 +135,13 @@ class User extends CI_Controller {
         ));
     }
 
-    //CREATING IMAGE
-    public function createImage($image, $dir, $filename)
+
+    //#region create image
+    public function createImage($img, $dir, $filename)
     {
-        $data = base64_decode(preg_replace("#^data:image/\w+;base64,#i", "", $image));
+        $data = base64_decode(preg_replace("#^data:image/\w+;base64,#i", "", $img));
         file_put_contents("./assets/images/" . $dir . "/" . $filename, $data);
+        $data['image'] = $filename;
     }
-    
-
-    //#region UPLOAD IMAGE
-    public function imageUpload($file, $filename)
-    {
-        
-    }
-
-
     //#endregion
-
-
-    #region
-    public function loadUsers(){
-        echo json_encode($this->UserModel->loadUsers());
-    }
-
-    #endregion
-
 }

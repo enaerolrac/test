@@ -10,13 +10,13 @@ class Registration extends CI_Controller
         $this->load->helper("url");
         $this->load->library("session");
         $this->load->model("UserModel");
-
         $this->sessionUser = $this->session->userdata("user");
+    
     }
     public function index(){
 
         $data['user'] = $this->sessionUser;
-        $data['roles'] = $this->UserModel ->getRoles();
+        $data['roles'] = $this->UserModel->getRoles();
         $this->load->view("template/header");
         $this->load->view("template/sidebar");
         $this->load->view("registration",$data);

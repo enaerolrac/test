@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'user';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-
+        //link             controller
 $route['user/login'] = 'user/login';
 $route['dashboard'] = 'dashboard';
 $route['user-login'] = 'user/logout';

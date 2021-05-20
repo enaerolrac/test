@@ -46,6 +46,9 @@
 <?php if (current_url() == site_url()): ?>
 <script src="<?php echo site_url('assets/js/scripts/login/login.js'); ?>"></script>
 <?php elseif(current_url() == site_url("dashboard")): ?>
+    <script src="<?php echo site_url('assets/js/chartjs/chart.min.js'); ?>"></script>
+    <script src="<?php echo site_url('assets/js/chartjs/chart.annotation.js'); ?>"></script>
+    <script src="<?php echo site_url('assets/js/chartjs/datalabels.min.js'); ?>"></script>
 <script src="<?php echo site_url('assets/js/scripts/dashboard/dashboard.js'); ?>"></script>
 <?php elseif(current_url() == site_url("registration")): ?>
 <script src="<?php echo site_url('assets/js/scripts/registration/registration.js'); ?>"></script>
